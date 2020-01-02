@@ -1,0 +1,102 @@
+<?php 
+/*************************************************************************
+ * No nativo de wordpress.
+ * -----------------------------------------------------------------------
+ * 	Creado por: 
+ *		Helynai Elizabeth Chuc Maldonado.
+ *		Daniel Noe Vera Morales: danyelmorales1991@gmail.com
+ *************************************************************************/
+class MenuFunctor implements IFunctor
+{
+
+	public function getLevelAction()
+	{
+		// not supported
+		$callBackActions = array
+		(	
+			1 => function($info)   
+			{},
+		);		
+		return  $callBackActions;
+	}
+	
+	public function getLevelEventAction()
+	{
+		$events = array
+		(
+			// OnDetecting a level start, end, or action 
+			// OnLevelStarts functions
+			/*'ols_1' => function($childs = null, $infox = null)
+			{
+				$title = $infox->title;
+				$url  = $infox->url;
+				$buffer = '';
+				
+				if($childs > 0)
+				{
+					$buffer = '<li><a href="' . $url . '" class="">' . $title . '</a>' . "\n";
+					$buffer .= '<div class="submenu">' . "\n\t" .  '<ul>' . "\n\t";
+				}
+
+				return $buffer;
+			},
+			
+			'ols_2' => function($childs = null, $infox = null)
+			{
+				
+			},
+			
+			// OnLevelEnds functions
+			'ole_1' => function($childs = null, $infox = null)
+			{
+				$buffer = '';
+				if($childs > 0)
+				{
+					$buffer = '</li></ul>' . "\n\t" . '</div>' . "\n";
+				}
+				
+				return $buffer;
+			},
+			
+			'ole_2' => function($childs = null, $infox = null)
+			{
+			},
+			*/
+			
+			// OnDetecting elements of tree
+			'onLeaf' => function($level = null, $childs = null, $infox = null)
+			{
+				$title = $infox->title;
+				$url  = $infox->url;
+				return '<li><a href="' . $url . '" class="">' . $title . '</a></li>' . "\n";
+			},
+			
+			'onParent' => function($level = null, $childs = null, $infox = null)
+			{
+				$title = $infox->title;
+				$url  = $infox->url;
+				$buffer = '<li><a href="' . $url . '" class="">' . $title . '</a>' . "\n";
+				$buffer .= '<div class="submenu">' . "\n\t" .  '<ul>' . "\n\t";
+				return $buffer;
+			},
+			
+			'onParentEnd' => function($level = null, $childs = null, $infox = null)
+			{
+				$buffer = '</li></ul>' . "\n\t" . '</div>' . "\n";
+				return $buffer;
+			}
+		);
+		
+		return $events;
+	}
+	
+	public function getargs()
+	{
+		$args = array(
+			'reorderNELeaf' => 'no'
+		);
+		
+		return $args;
+	}
+	
+}

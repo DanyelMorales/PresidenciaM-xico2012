@@ -1,0 +1,234 @@
+<?php
+/*************************************************************************
+ * No nativo de wordpress.
+ * -----------------------------------------------------------------------
+ *	Crea un nodo de un arbol multicamino
+ * -----------------------------------------------------------------------
+ * 	Creado por: 
+ *		Helynai Elizabeth Chuc Maldonado.
+ *		Daniel Noe Vera Morales: danyelmorales1991@gmail.com
+ *************************************************************************/
+class CreadorDeMenu
+{
+	public function __construct()
+	{
+	
+	}
+
+	/*************************************************************************
+	 * @descrip Función	creadora de menus, interfaz para ejecutar funciones.
+	 * @param 	$type 		tipo de menu
+	 * @param 	$menu_name	nombre del menu
+	 * @param 	$callBack 	función lambda(anonima) para procesar titulo y link
+	 * @return string		data
+	 *************************************************************************/
+	public function construirMenu($type, $menu_name, $callBack, $topEndTag = NULL)
+	{
+		$data = 'No existe el menu seleccionado';
+		
+		switch($type)
+		{
+			case 'menu_simple':
+				$data = construirMenuSimple($menu_name, $callBack);
+			break;
+			
+			case 'menu_compuesto_dosn':
+				$data = construirMenuCompuesto_dosRamas($menu_name, $callBack, $topEndTag);
+			break;
+			
+			case 'menu_automatico':
+				$data = construirMenu_auto($menu_name, $callBack, $topEndTag);
+			break;
+		}
+		
+		return $data;
+	}
+	 
+	 
+	public function construirMenu_auto($menu_name, $callBack, $gomita = array())
+	{
+		$menu_list = '';
+		
+		if ( ( $locations = get_nav_menu_locations() ) && isset( $locations[ $menu_name ] ) ) 
+		{
+			$callBackActions = array
+			(	
+				1 => function($info)
+				{
+					echo '<li> <a href="#" class="">' . $info->title . '</a>' . "\n";
+				},
+				  
+			);
+
+			$callBackEventActions = array
+			(
+				// OnLevelStarts functions
+				'ols_1' => function($childs = null, $infox = null)
+				{
+					$title = $infox->title;
+					$url  = $infox->url;
+					$buffer = '';
+					
+					if($childs > 0)
+					{
+						$buffer = '<li><a href="' . $url . '" class="">' . $title . '</a>' . "\n";
+						$buffer .= '<div class="submenu">' . "\n\t" .  '<ul>' . "\n\t";
+					}
+
+					return $buffer;
+				},
+				
+				'ols_2' => function($childs = null, $infox = null)
+				{
+					
+				},
+				
+				// OnLevelEnds functions
+				'ole_1' => function($childs = null, $infox = null)
+				{
+					$buffer = '';
+					if($childs > 0)
+					{
+						$buffer = '</li></ul>' . "\n\t" . '</div>' . "\n";
+					}
+					
+					return $buffer;
+				},
+				
+				'ole_2' => function($childs = null, $infox = null)
+				{
+				},
+				
+				// tree leaf detected
+				'onLeaf' => function($level = null, $childs = null, $infox = null)
+				{
+					$title = $infox->title;
+					$url  = $infox->url;
+					return '<li><a href="' . $url . '" class="">' . $title . '</a></li>' . "\n";
+				}
+			);
+			
+			$args = array(
+			'reorderNELeaf' => 'no'
+			);
+			
+			$menu = wp_get_nav_menu_object( $locations[ $menu_name ] );
+			$menu_items = (array)wp_get_nav_menu_items($menu->term_id);
+			$walk = new MenuGen($menu_items);
+			$menu_list = $walk->createChocolateTree($callBackActions, $callBackEventActions, $args);
+			
+		}
+		else 
+		{
+			$menu_list = '<ul><li>Menu "' . $menu_name . '" not defined.</li></ul>';
+		}
+		return $menu_list;
+	}
+ 
+ 
+	/*************************************************************************
+	 * @descrip Función	creadora de menus simples sin hijos.
+	 * @param 	$menu_name	nombre del menu
+	 * @param 	$callBack 	función lambda(anonima) para procesar titulo y link
+	 * @return string		$menu_list	
+	 *************************************************************************/
+	public function construirMenuSimple($menu_name, $callBack)
+	{
+		$menu_list = '';
+		
+		if ( ( $locations = get_nav_menu_locations() ) && isset( $locations[ $menu_name ] ) ) 
+		{
+			$menu = wp_get_nav_menu_object( $locations[ $menu_name ] );
+			$menu_items = wp_get_nav_menu_items($menu->term_id);
+			
+			foreach ( (array) $menu_items as $key => $menu_item )
+			{
+				$title = $menu_item->title;
+				$url = $menu_item->url;
+				$itemParent = $menu_item->menu_item_parent;
+				$menu_list .= $callBack($url, $title);
+			}
+		} else {
+			$menu_list = '<ul><li>Menu "' . $menu_name . '" not defined.</li></ul>';
+		}
+		
+		return $menu_list;
+	}
+ 
+	/*************************************************************************
+	* @descrip Función	creadora de menus de dos niveles, padre->hijo .
+	* @param 	$menu_name	nombre del menu
+	* @param 	$callBack 	función lambda(anonima) para procesar titulo y link
+	* @return string		$menu_list	
+	*************************************************************************/
+	public function construirMenuCompuesto_dosRamas($menu_name, $callBack, $gomita = array())
+	{
+		$menu_list = '';
+		$blackList = array();
+		
+		if ( ( $locations = get_nav_menu_locations() ) && isset( $locations[ $menu_name ] ) ) 
+		{
+			$menu = wp_get_nav_menu_object( $locations[ $menu_name ] );
+			$menu_items = wp_get_nav_menu_items($menu->term_id);
+			
+			// si c no es hijo de p, entonces c es p.
+			foreach ( (array)$menu_items as $kPapa => $posiblePadre )
+			{			
+				$posiblePadreID = $posiblePadre->ID;
+				$padreTitle = $posiblePadre->title;
+				$padreUrl = $posiblePadre->url;
+				$existeHijo = false;
+				$buffer = $gomita[0];	
+				
+				foreach ( (array)$menu_items as $kHijo => $miHijo )
+				{
+					$hijoId = $miHijo->ID;
+					$padre = (int)$miHijo->menu_item_parent;
+					$hijoTitle = $miHijo->title;
+					$hijoUrl = $miHijo->url;
+
+					if($posiblePadreID == $padre)
+					{
+						// es su hijo
+						array_push($blackList, $hijoId);
+						$buffer .= $callBack($hijoUrl, $hijoTitle, null);
+						$existeHijo = true;
+					}		
+				}
+				
+				if($existeHijo)
+				{
+					// entonces c si es hijo de p y lo tratamos como un hijo de p
+					$buffer .= $gomita[1];
+					$menu_list .= $callBack($padreUrl, $padreTitle, $buffer);
+					$buffer = '';
+				}
+				else
+				{
+					if(!in_array($posiblePadreID, $blackList))
+					{
+						$menu_list .= $callBack($padreUrl, $padreTitle, null);
+					}
+				}
+			}
+					
+		} else {
+			$menu_list = '<ul><li>Menu "' . $menu_name . '" not defined.</li></ul>';
+		}
+		
+		return $menu_list;
+	}
+	
+	/*************************************************************************
+	 * @descrip Función	callback o función lamba(anonima)
+	 * @param   $url		enlace del item al que se dirigira el usuario
+	 * @param   $title		titulo o texto del enlace
+	 * @param   $buffer    informacion a concatenar en la cadena del item
+	 * @return  string
+	 *************************************************************************/
+	function callBack_navMenuNormal($url, $title, $buffer = null)
+	{
+		return '<li><a href="' . $url . '" class="">' . $title . '</a> '. $buffer .'</li>' . "\n";
+	}
+	
+}

@@ -1,0 +1,21 @@
+@media screen and (min-width: 600px)  and (max-width: 799px) {
+	
+	article.home-post{
+		box-sizing: border-box;
+		width: 30%;
+		height: 300px;
+		float: left;
+		margin-right: 10px;
+	}
+
+	#content .row.clearfix .col8{
+		padding-left: 3%;
+		box-sizing: border-box;
+	}
+
+	.archive-nav{
+		padding-top: 30px;
+		margin:0px;
+		clear: both;
+	}
+}

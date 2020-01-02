@@ -1,0 +1,21 @@
+/*
+Theme Name: itCancun
+Theme URI: http://wordpress.org/themes/twentythirteen
+Author: Helynai Elizabeth Chuc Maldonado
+Author URI: www.itcancun.edu.mx/
+Description: Tema estandarizado para micrositios con imagen institucional del  gobierno de la republica Mexicana.
+Version: 0.1
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Tags: black, brown, orange, tan, white, yellow, light, one-column, two-columns, right-sidebar, fluid-layout, responsive-layout, custom-header, custom-menu, editor-style, featured-images, microformats, post-formats, rtl-language-support, sticky-post, translation-ready, accessibility-ready
+Text Domain: itCancun
+
+This theme, like WordPress, is licensed under the GPL.
+Use it to make something cool, have fun, and share what you've learned with others.
+*/
+@font-face { font-family: 'trajan'; src: url("../fonts/trajan_pro_regular-webfont.eot"); src: url("../fonts/trajan_pro_regular-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/trajan_pro_regular-webfont.woff") format("woff"), url("../fonts/trajan_pro_regular-webfont.ttf") format("truetype"), url("../fonts/trajan_pro_regular-webfont.svg#TrajanProRegular") format("svg"); font-weight: normal; font-style: normal; }
+
+#site-tituloInstitucion{
+	font-weight: bold;
+	margin-left: 300px;
+}

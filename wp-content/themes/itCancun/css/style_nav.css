@@ -1,0 +1,29 @@
+#storify-nav {
+    display: block;
+    width: 600px;
+    margin: 0 auto;
+    clear: both;
+}
+#story {
+    display: block;
+    width: 100%;
+    height: auto;
+    margin: 10px;
+    clear: both;
+}
+#storify-nav a {
+    color: inherit;
+    text-decoration: none;
+}
+.storify-avatar {
+    float: left;
+    margin: 0px 10px;
+}
+.story-title {
+    padding: 10px 0px;
+    clear: none !important;
+}
+.story-clear {
+    clear: both;
+    width: 100%;
+}

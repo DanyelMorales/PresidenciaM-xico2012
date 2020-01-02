@@ -1,0 +1,526 @@
+.noscroll{
+	overflow: hidden;
+}
+
+@media screen and (min-width: 0px)  and (max-width: 799px) {
+		/*640px*/
+		/* LIMPIANDO SECCIONES QUE NO SE USARÁN 
+		   -------------------------------------- 
+		   Remover la linea 9 en caso de que se elimine 
+		   la sección INICIO del sitio principal
+		*/
+		header#site-header #site-nav-mobile section#main-menu div.panel-menu > ul > li:nth-child(1),
+		#site-header .top-extras #lema_instituto br,
+		#site-header  .top #site-sec-nav, #site-header #site-nav,
+		#main-slider, #home-footer, #content #main-slider, 
+		#content article.home-post p,  .blog-post time.post-time-ribbon, 
+		.post-page .blog-post .post-content img,
+		#content #externalLink, .sidebar, #site-footer #nav-footer, 
+		footer#site-footer p span, #site-footer ul.social-bts
+		{
+			display: none !important;
+		}
+
+		/* Modificando tamaños de elementos en el sitio*/
+		header{
+			width:100%;
+			display: inline-block;
+			position:relative;
+			height: 330px !important;
+			/*border:1px red solid;*/
+			/*margin-top:50px;*/
+			padding-bottom: 10px;
+			margin-bottom:25px;
+			background: url("../../img/post-bottom-shadow.png") 50% 100% no-repeat;
+		}
+
+		ul{
+			list-style:none;
+		}
+
+		body{
+			font-size: 21px;
+		}
+
+		header#site-header #site-nav-mobile{
+			display: block;
+			height: 48px;
+			position: fixed;
+			width: 100%;
+			z-index: 10000;
+			background-color: #9B9B9B;
+			/*background: url("../../img/sprites.png?v=1.6") 0 0 no-repeat;*/
+			background: url("../../img/sprites.png?v=1.6") -41px -417px no-repeat;
+			top:0px;
+			color: #5f5e5c;
+		}
+		
+		header#site-header #site-nav-mobile > ul{
+			height: 100%;
+			position: relative;
+			padding-left: 40%;
+		}
+
+		header#site-header #site-nav-mobile > ul li{
+			display: inline-block;
+			font-size: 1.3em;
+			padding-top: 10px;
+			/*padding-left: 20%;*/
+			margin: 0 auto;
+		}
+
+		header#site-header #site-nav-mobile > ul > li>a{
+			color: #5f5e5c;
+		}
+
+		header#site-header #site-nav-mobile > ul li:first-child{
+			position: absolute;
+			left: 0.5em;
+			padding-left: 0;
+			font-size: 1.8em;
+			padding-top: 5px;
+		}
+
+		header#site-header #site-nav-mobile > ul li:last-child{
+			position: absolute;
+			right: 0.5em;
+			padding-left: 0;
+		}
+		
+		header#site-header #site-nav-mobile section#main-menu div.panel-menu > ul > li > a{
+			color: #852d2d;
+		}
+
+		header#site-header #site-nav-mobile section#main-menu div.panel-menu > ul > li > a:before, .hCandyBullet:before
+		{
+			font-family: 'icomoon';
+			content: "\e60f";
+			font-size: 1.5em;
+			font-weight: 900;
+		}
+
+		header#site-header #site-nav-mobile section#main-menu div.panel-menu{
+			right: 0;
+		}
+
+		header#site-header #site-nav-mobile section#secondary-menu div.panel-menu{
+			left: 0;
+		}
+
+		header#site-header #site-nav-mobile section div.panel-menu{
+			min-height: 100% !important;
+			background-color: rgb(226, 226, 225);
+			width: 75%;
+			position: absolute;	
+			border-top: 1px #cecece solid;
+			border-left: 1px #cecece solid;
+			/*---*/
+		  	overflow-y: scroll;
+		}
+
+		header#site-header #site-nav-mobile section div ul li{
+			border-bottom: 1px rgb(207, 207, 207) dotted;
+			margin-right:10px;
+			padding-left:10px;
+			text-align:left;
+			margin-bottom: 12px;
+			margin-top: 12px;
+			padding-bottom: 13px;
+			font-size: .9em;
+			position:relative;
+		}
+
+		header#site-header #site-nav-mobile section div ul li span{
+			position:absolute;
+			top:4px;
+			padding-left: -5px;
+		}
+
+		header#site-header #site-nav-mobile section#main-menu, section#secondary-menu{
+			display:none;
+			z-index: 1000;
+			position: fixed;
+			width: 100%;
+			height: 100%;
+		 	min-height: 100%;
+		 	overflow-y: scroll; 
+			max-height: 100% !important;
+			top: -22px;
+			background-color: rgba(0, 0, 0, 0.82);
+			font-size: 1em;
+		}
+
+		header#site-header #site-nav-mobile section#secondary-menu .social-bts{
+			overflow: hidden;
+			max-width: 100%;
+			height: 50px;
+		}
+
+		header#site-header #site-nav-mobile section#secondary-menu{
+			text-transform: uppercase;
+		}
+
+		header#site-header #site-nav-mobile .submenu {
+			z-index:9000;
+			position: fixed;
+		 	display: none; 
+		 	min-height: 100%;
+			max-height: 100% !important;
+			background-color: rgb(226, 226, 225);
+			overflow-y: scroll; 
+			top: 46px;
+			margin-left: -12px;
+			padding: 0px;
+			/*right: 0;*/
+			width:100%;
+		}
+
+		header#site-header #site-nav-mobile .submenu ul li a, section#secondary-menu ul li a{
+			white-space: nowrap; 
+			display: block;
+			text-overflow: ellipsis;
+			overflow: hidden;
+			max-width: 150px;
+			z-index:8500;
+		}
+
+
+		header#site-header section{
+			margin-top: 68px;
+		}
+		
+		article.home-post{
+			padding: 0px 0px 20px 0px;
+			margin-top: 0px;
+		}
+
+		article.home-post h4{
+			/*display: none;*/
+			padding-left: 4px;
+			font-size: 85% !important;
+			margin-top: 0px;
+			overflow: hidden;
+			text-overflow: ellipsis;
+			max-width: 350px;
+			white-space: nowrap;
+		}
+
+		article.home-post time{
+			display: none;
+		}
+
+		article.home-post a.thumb
+		{
+			position: relative;
+			width: 99%;
+			height: 200px;
+		}
+
+		article.home-post a.thumb img{
+			width: 100%;
+			height: 100%;
+		}
+
+		article.home-post a.more-link{
+			
+		}
+
+
+		/* 
+		Generic Styling, for Desktops/Laptops 
+		*/
+		table { 
+		width: 100%; 
+		border-collapse: collapse; 
+		}
+		/* Zebra striping */
+		tr:nth-of-type(odd) { 
+		background: #eee; 
+		}
+		th { 
+			background: #333; 
+			color: white; 
+			font-weight: bold; 
+		}
+		td, th { 
+			padding: 6px; 
+			border: 1px solid #ccc; 
+			text-align: left; 
+		}
+
+		tbody {
+		  display: table-row-group;
+		  vertical-align: middle;
+		  border-color: inherit;
+		}
+
+		/* Modficando las caracteristicas de los elementos*/
+		#site-header{
+			padding-top: 0px; 
+		}
+
+		#wrapper { 
+			position:relative;
+			padding: 0 0px;
+			padding-bottom: 110px;
+		}
+
+		#site-header .top{
+			padding-top: 0px;
+		}
+
+		#content{
+			margin-bottom: 17px;
+		}
+
+		#site-header .top-extras{
+			font-size: 0.6em;
+			padding: 0px;
+			position: absolute !important;
+			bottom: 0px; 
+			width: 100%;
+			z-index: -1;
+		}
+
+		#site-header .top-extras #lema_instituto{
+			margin: 0 auto;
+			width: 100%;
+			position: relative;
+			font-size: 1.1em;
+			padding-top: 11px;
+			line-height: 1.3;
+		}
+
+		#site-header #site-logo a {
+			background-image: url("../img/tec/logo_tec.png"); /* ok */ 			
+			background-position: 0 0px;
+			background-size: 100% 100%;
+			height:176px; 
+			margin: 0 auto; 
+			position:relative;
+			width:133px; 
+		}
+		
+		#site-header #site-sublogo {
+			margin-top:5px;
+			padding:0px;
+			margin-bottom: 0px;
+		}
+
+		#site-header #site-sublogo a{
+			background-image: none; 
+			color:#5A5A5A;
+			display: inline-block; 
+			font-family: 'trajan'; 
+			font-size: 0.5em !important;
+			font-weight: bold;
+			height: auto;
+			left:0;
+			line-height: 30px;
+			position: relative;
+			text-align: center;
+			text-indent: 0px;
+			text-shadow: rgba(0,0,0,.01) 0 0 1px;
+			width:100%;
+		}		
+
+		/*no borrar*/
+		#site-footer {
+			margin-top: 48px;
+			margin-bottom: -8px;
+			/* border: 1px red solid; */
+			position: absolute;
+			bottom: 20px;
+			width: 100%;
+			right: 0;
+		}
+
+		#site-footer .middle #logo-footer {
+			background-image: url("../../img/sprites.png?v=1.7") !important;
+			background-repeat: no-repeat;
+			background-position: -535px -112px;
+			height: 57px;
+			width: 165px;
+		}
+
+		#site-footer .middle {
+			margin-bottom: 5px;
+			position: relative;
+		}
+
+		#site-footer .bottom {
+			font-family: "trajan";
+			font-size: 0.44em;
+			font-weight: normal; clear: both;
+			margin: 0 auto;
+			width: 57%;
+		}
+
+		#site-footer .middle #logo-footer:before, #site-footer .middle #logo-footer:after{
+			bottom: 24px;
+			width: 24%;
+		}
+	
+		.hCandyBullet
+		{
+			background-image: none; 
+			display: block; 
+			text-indent: 0px; 
+			float: left;  
+			margin: 0px 2px 0px 199px; 
+		}
+
+		/*.hCandyBullet:before
+		{
+			font-family: 'icomoon';
+			content: "\e60f";
+			font-size: 1.5em;
+			font-weight: 900;
+		}*/
+
+		.layout-978 {
+			width: 100%;
+		}
+
+		.col8 { 
+			width: 100%; 
+		}
+	
+		.post-page .blog-post .mobile-image-viewer{
+			display: block;
+			margin:0px;
+			padding: 0px;
+		}
+		
+		.post-page .blog-post .mobile-image-viewer ul {
+			/*border:1px yellow solid;	*/
+			padding:0px;
+			height: 60px;
+			max-width:100%;
+			overflow: hidden;
+			border-bottom:1px #cecece dotted;
+			text-align: center;
+			font-size: 0.5em;
+		}
+
+		.post-page .blog-post .mobile-image-viewer ul li {
+			display: inline-block;
+			list-style: none;
+			/*border:1px blue solid;*/
+			width: 80px;
+			height: 100%;
+			padding:0px;
+			margin:0px;
+		}
+
+		.post-page .blog-post .mobile-image-viewer ul li figure{
+			width:100%;
+			height:100%;
+			margin:0px;
+			padding:0px;
+		}
+			
+		.post-page .blog-post .mobile-image-viewer ul li figure img{
+			display:block !important;
+			/*border:1px red solid;*/
+			width:100%;
+			height:100%;
+		}
+
+		.post-page .blog-post p{
+			margin-bottom: 10px;
+		}
+		
+		.blog-post{
+			background: none;
+			position: relative;
+			padding: 0 15px 0 15px;
+			max-width: 100%;
+			text-align: justify;
+		}
+
+		.blog-post .post-author{;
+			background:none;
+			position:absolute;
+			top: 25px;
+ 			right: 10px;
+		}
+
+		.blog-post .post-title{
+			font-size: 0.8em;
+			margin: 0px;
+			margin-bottom: 30px;
+
+			white-space: nowrap; 
+		    overflow: hidden;
+		    text-overflow: ellipsis; 
+		}
+
+		.blog-post .post-content{
+			margin-top: 35px;
+			background: url("../../img/line-01.gif") repeat-x top;
+			padding-top: 8px;
+			padding-left: 2px;
+			margin-bottom: 30px;
+		}
+
+		.col11{
+			max-width: 100%;
+		}
+
+		.bg1{
+			width: 100%;
+			margin: 0px;
+		}
+
+		.bg1:before{
+			width: 100%;
+		}
+
+		.featured-media.no-border{
+			width: 100%;
+
+		}
+
+		.big-video{
+			width: 100%;
+			height: 200px;
+		}
+
+		.video-thumb:after{
+			margin: 50px 0 0 -48px;
+		}
+
+		.blog-post .post-thumb img{
+			width:100%;
+			height: 100%;
+			margin-bottom: 0px;
+		}
+		
+		.blog-post .post-content p{
+			margin-top: 0.2em;
+			text-align: justify;
+		}
+
+		.blog-post .post-author .post-time {
+		}
+}
+
+
+/* 335 width*/
+@media screen and (min-width: 100px) and (max-width: 350px) {
+	
+	#site-header #site-sublogo a{
+		font-size: 0.3em;
+	}
+
+	header{
+		height: 360px !important;
+	}
+
+	#site-header .top 
+	{
+		padding-top: 0px;
+    	/*padding-top: 0px;
+	}
+}
