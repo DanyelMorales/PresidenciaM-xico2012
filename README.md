@@ -11,4 +11,4 @@ Wordpress Theme Designed to follow institutional Style of México Presidence Web
 
 ### why?
 Universities, Schools, and  companies working for Mexico Government should follow a uniform style for websites and documents. 
-Building and designing this kind of projects is very expensive, and Mexicans pay for it through taxes. I think is not fare for Mexicans to pay for a website which should not change every six years, that's why I have created a wordpress theme which you can use for free. Theme's first version was deployed in "Instituto Tecnólogico de Cancun" website.
+Building and designing this kind of projects is very expensive, and Mexicans pay for it through taxes. I think is not fair for Mexicans to pay for a website which should not change every six years, that's why I have created a wordpress theme which you can use for free. Theme's first version was deployed in "Instituto Tecnólogico de Cancun" website.
