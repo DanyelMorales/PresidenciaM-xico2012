@@ -2,9 +2,9 @@
 Wordpress Theme with institutional style like it was at Peña Nieto's government.
 
 ## Usage
-1- Copy "wp-content/themes/itCancun" content to "yourproject/wp-content/themes/itcancun" directory.
-2- Open your wordpress wp-admin page and go to themes
-3- Activate Theme
+1. Copy "wp-content/themes/itCancun" content to "yourproject/wp-content/themes/itcancun" directory.
+2. Open your wordpress wp-admin page and go to themes
+3. Activate Theme
 
 ### What?
 Wordpress Theme Designed to follow institutional Style of México Presidence Website for Peña Nieto's Government.
